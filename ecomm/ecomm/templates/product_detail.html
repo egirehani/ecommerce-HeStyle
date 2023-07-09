@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+<!--Main layout-->
+<main class="mt-5 pt-4">
+    <div class="container mt-5">
+        <!--Grid row-->
+        <div class="row">
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+                <img src="{{ object.gambar.url }}" class="img-fluid" alt="" />
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+                <!--Content-->
+                <div class="p-4">
+                    <div class="mb-3">
+                        <a href="">
+                            <span class="badge bg-dark me-1">{{ object.get_kategori_display }}</span>
+                        </a>
+                        {% if object.label == 'NEW' %}
+                        <a href="">
+                            <span class="badge bg-{{ object.get_label_display }} me-1">New</span>
+                        </a>
+                        {% elif object.label == 'SALE' %}
+                        <a href="">
+                            <span class="badge bg-{{ object.get_label_display }} me-1">Sale</span>
+                        </a>
+                        {% else %}
+                        <a href="">
+                            <span class="badge bg-{{ object.get_label_display }} me-1">Bestseller</span>
+                        </a>
+                        {% endif %}
+                    </div>
+
+                    <p class="lead">
+                        {% if object.harga_diskon %}
+                        <span class="me-1">
+                            <del>${{ object.harga }}</del>
+                        </span>
+                        <span>${{ object.harga_diskon }}</span>
+                        {% else %}
+                        <span>${{ object.harga }}</span>
+                        {% endif %}
+                    </p>
+
+                    <strong><p style="font-size: 20px;">Deskripsi</p></strong>
+
+                    <p>{{ object.deskripsi }}</p>
+                    <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary ms-1">
+                        Tambah ke Keranjang
+                        <i class="fas fa-shopping-cart ms-1"></i>
+                    </a>
+                    <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger ms-1" >
+                        Kurangi Keranjang
+                        <i class="fas fa-shopping-cart ms-1"></i>
+                    </a>
+                </div>
+                <!--Content-->
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+
+        <hr />
+
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center">
+            <!--Grid column-->
+            <div class="col-md-6 text-center">
+                <h4 class="my-4 h4">Additional Information</h4>
+
+                <p>“SPESIAL BANGET NIH! ADA DISKON 50% khusus MEMBER. Jangan lupa gunakan kode promo: MEMBERHESTYLE untuk dapetin tambahan diskonnya ya! (Min. Transaksi 200k, Max. Disc 50k).</p>
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+
+        <!--Grid row-->
+        <div class="d-flex justify-content-center">
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <img src="https://hips.hearstapps.com/hmg-prod/images/quiet-luxury-1606239428.jpg?crop=0.888888888888889xw:1xh;center,top&resize=1200:*" class="img-fluid" alt="" />
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <img src="https://www.telegraph.co.uk/content/dam/fashion/2019/11/27/Fashion-1_trans_NvBQzQNjv4BqqVzuuqpFlyLIwiB6NTmJwfSVWeZ_vEN7c6bHu2jJnT8.jpg?imwidth=680" class="img-fluid" alt="" />
+            </div>
+            <!--Grid column-->
+        </div>
+        <!--Grid row-->
+    </div>
+</main>
+<!--Main layout-->
+{% endblock content%}
